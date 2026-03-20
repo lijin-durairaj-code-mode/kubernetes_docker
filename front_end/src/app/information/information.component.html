@@ -1,0 +1,46 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+  <!-- Name -->
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" class="form-control" formControlName="name">
+
+     <div *ngIf="f['name'].touched && f['name'].invalid" class="text-danger">
+      <small *ngIf="f['name'].errors?.['required']">Name is required</small>
+      <small *ngIf="f['name'].errors?.['minlength']">Minimum 3 characters</small>
+      <small *ngIf="f['name'].errors?.['maxlength']">Maximum 50 characters</small>
+    </div> 
+  </div>
+
+  
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="text" class="form-control" formControlName="email">
+
+    <div *ngIf="f['email'].touched && f['email'].invalid" class="text-danger">
+      <small *ngIf="f['email'].errors?.['required']">Email is required</small>
+      <small *ngIf="f['email'].errors?.['email']">Invalid email format</small>
+    </div>
+  </div>
+
+  
+  <div class="mb-3">
+    <label class="form-label">Query</label>
+    <textarea class="form-control" formControlName="query"></textarea>
+
+    <div *ngIf="f['query'].touched && f['query'].invalid" class="text-danger">
+       <small *ngIf="f['query'].errors?.['required']">Query is required</small>
+      <small *ngIf="f['query'].errors?.['minlength']">Minimum 10 characters</small>
+     <small *ngIf="f['query'].errors?.['maxlength']">  Maximum 500 characters</small>
+    </div>
+  </div> 
+
+  <!-- Submit -->
+  <button 
+    type="submit" 
+    class="btn btn-primary"
+    [disabled]="contactForm.invalid">
+    Submit
+  </button>
+
+</form>
