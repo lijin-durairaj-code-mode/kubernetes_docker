@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
+const BASE_URL='http://localhost:8000 '
 @Component({
   selector: 'app-information',
   templateUrl: './information.component.html',
   styleUrls: ['./information.component.css']
 })
 export class InformationComponent {
+  
   contactForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private http:HttpClient) {
     this.contactForm = this.fb.group({
       name: [
         '', 
@@ -47,6 +50,10 @@ export class InformationComponent {
       return;
     }
 
-    console.log(this.contactForm.value);
-  }
+    this.http.post(BASE_URL+'/user',this.contactForm.value)
+    .subscribe(res=>{
+      console.log(res)
+    })
 }
+}
+
