@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
-const BASE_URL='http://localhost:8000 '
+const BASE_URL='http://localhost:8000'
 @Component({
   selector: 'app-information',
   templateUrl: './information.component.html',
@@ -50,9 +50,15 @@ export class InformationComponent {
       return;
     }
 
-    this.http.post(BASE_URL+'/user',this.contactForm.value)
-    .subscribe(res=>{
-      console.log(res)
+    this.http.post(BASE_URL+'/add_user',this.contactForm.value,{
+      withCredentials: true   
+    })
+    .subscribe((res)=>{
+      this.contactForm.reset();
+    },(err)=>{
+      console.log(err)
+    },()=>{
+      console.log('completed !!!')
     })
 }
 }
