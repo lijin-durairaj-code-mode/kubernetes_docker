@@ -1,0 +1,16 @@
+apiVersion: v1 
+kind: service
+
+metadata:
+  name: user-details-frontend-kubernetes-service
+
+spec:
+  type: ClusterIP
+
+selector: 
+  component: front-end
+
+ports:
+  - port: 4200
+    targetPort: 4200
+  

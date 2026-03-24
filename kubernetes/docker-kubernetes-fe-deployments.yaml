@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment  
+
+metadata:
+  name: user-details-frontend-kubernetes-deployment 
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      component: front-end 
+
+  template:
+    metadata: 
+      labels:
+        component: front-end
+    spec:
+      containers:
+        - name: fe-container
+          image: lijindurairaj/frontend-app   
+          ports:
+            - containerPort: 4200
+          
+  

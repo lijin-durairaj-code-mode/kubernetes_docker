@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: user-details-backend-kubernetes-deployment 
+
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+        component: backend 
+
+  template:
+    metadata:
+      labels:
+        component: backend
+        
+    spec:
+      containers:
+        - name: container-backend
+          image: lijindurairaj/backend-app
+          ports:
+            - containerPort: 8000

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: service
+
+metadata:
+  name: userdetails-backend-kubernetes-Services
+  
+spec:
+  type: ClusterIP
+
+  selector:
+      component: backend
+  
+  ports:
+    - port: 8000
+      targetPort: 8000
