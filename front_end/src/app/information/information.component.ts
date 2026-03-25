@@ -2,7 +2,7 @@ import { Component  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
-const BASE_URL='http://localhost:8000'
+const BASE_URL='http://userdetails-backend-kubernetes-service:8000'
 @Component({
   selector: 'app-information',
   templateUrl: './information.component.html',
